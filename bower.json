@@ -1,8 +1,8 @@
 {
   "name": "adapt-trickle-component",
   "description": "Reveals each line of the component with a button press.",
-  "version": "1.0",
-  "framework": "^2.0.1",
+  "version": "1.0.1",
+  "framework": "^2.0.0",
   "displayName": "TrickleComponent",
   "component": "trickleComponent",
   "main": "/js/adapt-html.js",
