@@ -96,10 +96,10 @@ define(function(require) {
             if (stage === 0) {
                 var h = this.$(".btn-html-trickle").outerHeight();
                 console.log(h);
-                this.$(".html-button").height(h);
+                // this.$(".html-button").height(h);
             }
 
-            if (stage + 1 === this.model.get("numStages")) {
+            if (stage + 1 >= this.model.get("_items").length) {
                 this.onCompleted();
                 setTimeout(function() {
                     this.$(".html-button").height(0);
