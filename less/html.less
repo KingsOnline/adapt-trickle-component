@@ -14,9 +14,16 @@
 	transform: rotate(unit(@angle, deg));
 }
 
-.trickle-item, .html-button {
+.html-button,
+.trickle-item {
 	.html-transition(0.5s);
 	overflow: hidden;
+}
+
+.trickle-item-inner {
+	padding: 20px;
+	background-color: @primary-color;
+	color: @primary-color-inverted;
 }
 
 .html-button {
@@ -26,21 +33,47 @@
 .trickle-item.trickle-item-hidden {
 	height: 0;
 }
-
 @-webkit-keyframes clickme {
-	0%   {.html-transform-rotate(0);}
-	25%  {.html-transform-rotate(-2);}
-	50%  {.html-transform-rotate(0);}
-	75%   {.html-transform-rotate(2);}
-	100% {.html-transform-rotate(0);}
-}
+	0% {
+		.html-transform-rotate(0);
+	}
 
+	25% {
+		.html-transform-rotate(-2);
+	}
+
+	50% {
+		.html-transform-rotate(0);
+	}
+
+	75% {
+		.html-transform-rotate(2);
+	}
+
+	100% {
+		.html-transform-rotate(0);
+	}
+}
 @keyframes clickme {
-	0%   {.html-transform-rotate(0);}
-	25%  {.html-transform-rotate(-2);}
-	50%  {.html-transform-rotate(0);}
-	75%   {.html-transform-rotate(2);}
-	100% {.html-transform-rotate(0);}
+	0% {
+		.html-transform-rotate(0);
+	}
+
+	25% {
+		.html-transform-rotate(-2);
+	}
+
+	50% {
+		.html-transform-rotate(0);
+	}
+
+	75% {
+		.html-transform-rotate(2);
+	}
+
+	100% {
+		.html-transform-rotate(0);
+	}
 }
 
 .clickme {
@@ -69,7 +102,6 @@
 	color: #ffffff;
 }
 
-
 .clickme.complete {
 	-webkit-transform: none !important;
 	-moz-transform: none !important;
@@ -79,9 +111,7 @@
 	background-position: bottom;
 }
 
-.clickme-item {
-
-}
+.clickme-item {}
 
 .clickme-item-hidden {
 	opacity: 0;
