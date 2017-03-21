@@ -4,7 +4,7 @@ define(function(require) {
     var ButtonView = require("coreViews/buttonsView");
     var Adapt = require('coreJS/adapt');
 
-    var HTML = ComponentView.extend({
+    var trickleComponent = ComponentView.extend({
 
         events: {
             "click .btn-html-trickle": "advanceStage",
@@ -168,9 +168,9 @@ define(function(require) {
 
     });
 
-    Adapt.register('html', HTML);
+    Adapt.register('trickleComponent', trickleComponent);
 
-    return HTML;
+    return trickleComponent;
 
 });
 
