@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {},
+  "properties": {
+    "_items": {
+      "type": "array",
+      "required": false,
+      "title": "The lines that will appear",
+      "items": {
+        "_pageId": {
+          "type": "string",
+          "require": false,
+          "inputType": "Text",
+          "validators": []
+        }
+      }
+    }
+  }
+}
