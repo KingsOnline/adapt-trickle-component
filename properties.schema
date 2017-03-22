@@ -7,14 +7,44 @@
   "properties": {
     "_items": {
       "type": "array",
-      "required": false,
-      "title": "The lines that will appear",
+      "required": true,
+      "title": "Items",
       "items": {
-        "_pageId": {
-          "type": "string",
-          "require": false,
-          "inputType": "Text",
-          "validators": []
+        "type": "object",
+        "required": true,
+        "properties": {
+          "text": {
+            "type": "string",
+            "required": true,
+            "inputType": "Text",
+            "title": "Item text",
+            "default": "",
+            "validators": [],
+            "help": ""
+          },
+          "_graphic": {
+            "type": "object",
+            "required": false,
+            "title": "Graphic",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "inputType": "Text",
+                "validators": [],
+                "help": "The alternative text for this image"
+              },
+              "src": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "inputType": "Asset:image",
+                "validators": [],
+                "help": "Image for the tab content panel (optional)."
+              }
+            }
+          }
         }
       }
     }
