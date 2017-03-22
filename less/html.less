@@ -20,10 +20,28 @@
 	overflow: hidden;
 }
 
-.trickle-item-inner {
-	padding: 20px;
-	background-color: @primary-color;
-	color: @primary-color-inverted;
+.html-item-graphic-holder {
+	.html-item-graphic {
+		display: block;
+		max-height: 200px;
+		margin: 0 auto;
+	}
+}
+
+.trickle-item {
+	&:nth-child(odd) {
+		background-color: @primary-color;
+		color: @primary-color-inverted;
+	}
+
+	&:nth-child(even) {
+		background-color: @primary-color-inverted;
+		color: @primary-color;
+	}
+
+	.tricke-item-inner {
+		padding: 20px;
+	}
 }
 
 .html-button {

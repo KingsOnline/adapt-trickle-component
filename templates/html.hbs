@@ -6,12 +6,20 @@
         <div class="trickle-item nth-child-{{@index}}">
             <div class="trickle-item-inner">
                 {{#if this.length}}
-                    {{{a11y_text this}}}
+                    {{{a11y_text this.text}}}
                 {{else}}
                 <div class="html-item">
-                    {{#each this}}
+                  {{#if this.text}}
+                    <div class="html-item-text">{{{a11y_text this.text}}}</div>
+                  {{/if}}
+                  {{#if this._graphic.src}}
+                    <div class="html-item-graphic-holder">
+                      <img class="html-item-graphic" src="{{this._graphic.src}}"></img>
+                    </div>
+                  {{/if}}
+                    <!-- {{#each this}}
                     <div class="html-item-{{@key}}">{{{a11y_text this}}}</div>
-                    {{/each}}
+                    {{/each}} -->
                 </div>
                 {{/if}}
             </div>
