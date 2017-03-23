@@ -11,12 +11,10 @@ define(function(require) {
         },
 
         preRender: function() {
-            // Checks to see if the text should be reset on revisit
             this.checkIfResetOnRevisit();
         },
 
         render: function() {
-
             var data = this.model.toJSON();
             var templateMain = Handlebars.templates["html"];
             this.$el.html(templateMain(data));
@@ -24,47 +22,24 @@ define(function(require) {
             var tplName = this.model.get("_template");
             var $stages = this.model.get("_items").length;
 
-            this.loadTrickle($stages)
-            var $container = this.$(".component-inner");
-
             this.postRender();
         },
 
         postRender: function() {
             this.setReadyStatus();
 
-
-            if (this.model.get("_isClickme")) {
-                setTimeout(function() {
-                    this.$(".clickme").offset(this.$(".clickme-item").eq(0).offset());
-                }.bind(this), 0);
-            }
-
             // Load script if present
-
             this.$el.on("complete", _.bind(this.onCompleted, this));
 
             //Check if complete
             if (this.model.get("_isComplete")) {
                 this.$el.addClass("complete");
             }
-
-            if (this.model.get("_scripts")) {
-                _.each(this.model.get("_scripts"), function(fileName) {
-
-                    var script = document.createElement("script");
-                    script.src = "course/en/scripts/" + fileName;
-                    document.head.appendChild(script);
-                }, this);
-            }
         },
 
         loadTrickle: function($stages) {
             this.model.set("stage", 0);
-            this.model.set("numStages", $stages.length);
-            this.model.set("_isTrickle", true);
             this.$(".trickle-item").addClass("trickle-item-hidden");
-            console.log($(".trickle-item"));
         },
 
         advanceStage: function() {
@@ -74,8 +49,6 @@ define(function(require) {
 
             if (stage === 0) {
                 var h = this.$(".btn-html-trickle").outerHeight();
-                console.log(h);
-                // this.$(".html-button").height(h);
             }
 
             if (stage + 1 >= this.model.get("_items").length) {
