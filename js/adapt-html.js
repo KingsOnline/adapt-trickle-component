@@ -190,8 +190,7 @@ $.fn.extend({
             var st = $elScroll.eq(0).scrollTop();
             if (!st) st = $elScroll.eq(1).scrollTop();
         }
-				console.log(this);
-				$(this).removeClass('trickle-item-hidden');
+
         var top = this.offset().top;
         var winHeight = $(window).height();
         if (st + winHeight - 100 < top + h) $elScroll.animate({
@@ -200,6 +199,7 @@ $.fn.extend({
         this.height(h).trigger("reveal");
         setTimeout(function() {
             this.height("auto");
+            $(this).removeClass('trickle-item-hidden');
         }.bind(this), 500);
         return this;
     },
