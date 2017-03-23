@@ -18,23 +18,13 @@ define(function(require) {
             var data = this.model.toJSON();
             var templateMain = Handlebars.templates["html"];
             this.$el.html(templateMain(data));
-
-            var tplName = this.model.get("_template");
             var $stages = this.model.get("_items").length;
-
+            this.loadTrickle($stages)
             this.postRender();
         },
 
         postRender: function() {
             this.setReadyStatus();
-
-            // Load script if present
-            this.$el.on("complete", _.bind(this.onCompleted, this));
-
-            //Check if complete
-            if (this.model.get("_isComplete")) {
-                this.$el.addClass("complete");
-            }
         },
 
         loadTrickle: function($stages) {
