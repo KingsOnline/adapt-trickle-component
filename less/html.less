@@ -29,8 +29,12 @@
 }
 
 .trickle-item {
-	box-shadow: 5px 5px 5px #888888;
+	border: 2px solid #888;
 	margin: 10px 0;
+
+	&.trickle-item-hidden {
+		border: 0;
+	}
 
 	&:nth-child(odd) {
 		background-color: @primary-color;
@@ -45,6 +49,10 @@
 	.tricke-item-inner {
 		padding: 20px;
 	}
+}
+
+.html-item-graphic-holder {
+	margin-bottom: 20px;
 }
 
 .html-item-text {
