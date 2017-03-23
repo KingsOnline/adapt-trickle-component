@@ -7,8 +7,7 @@ define(function(require) {
     var trickleComponent = ComponentView.extend({
 
         events: {
-            "click .btn-html-trickle": "advanceStage",
-            "click .clickme": "clickmeNext"
+            "click .btn-html-trickle": "advanceStage"
         },
 
         preRender: function() {
@@ -23,14 +22,9 @@ define(function(require) {
             this.$el.html(templateMain(data));
 
             var tplName = this.model.get("_template");
-
             var $stages = this.model.get("_items").length;
-            console.log($stages);
 
             this.loadTrickle($stages)
-
-
-
             var $container = this.$(".component-inner");
 
             this.postRender();
@@ -63,10 +57,6 @@ define(function(require) {
                     document.head.appendChild(script);
                 }, this);
             }
-
-            if (!this.model.get("_isClickme") && !this.model.get("_isTrickle")) {
-                this.$el.on('inview', _.bind(this.inview, this));
-            }
         },
 
         loadTrickle: function($stages) {
@@ -74,18 +64,7 @@ define(function(require) {
             this.model.set("numStages", $stages.length);
             this.model.set("_isTrickle", true);
             this.$(".trickle-item").addClass("trickle-item-hidden");
-						console.log($(".trickle-item"));
-        },
-
-        loadClickMe: function($el, $clickmeItems) {
-            this.model.set("_isClickme", true);
-            this.model.set("stage", 0);
-            this.model.set("numStages", $clickmeItems.length);
-            $clickmeItems.addClass("clickme-item-hidden");
-
-            var clickme = document.createElement("a");
-            clickme.className = "clickme";
-            $el.append(clickme);
+            console.log($(".trickle-item"));
         },
 
         advanceStage: function() {
@@ -109,30 +88,6 @@ define(function(require) {
             }
         },
 
-        clickmeNext: function() {
-            var stage = this.model.get("stage");
-            var $items = this.$(".clickme-item");
-            var $clickme = this.$(".clickme");
-            $items.eq(stage).removeClass("clickme-item-hidden");
-            if (stage + 1 === this.model.get("numStages")) {
-                this.onCompleted();
-                var offset = this.$el.offset();
-                offset.left += (this.$el.outerWidth() / 2) - ($clickme.outerWidth() / 2);
-                offset.top += this.$el.outerHeight() - ($clickme.outerHeight() / 2);
-                $clickme.offset(offset);
-                $clickme.addClass("complete");
-                setTimeout(function() {
-                    clearInterval(this.clickmeInterval);
-                }.bind(this), 250);
-            } else {
-                stage++;
-                var $el = $items.eq(stage);
-                $clickme.offset($el.offset());
-                $el.scrollToThis();
-                this.model.set("stage", stage);
-            }
-        },
-
         onCompleted: function() {
             this.$(".component-inner").parent().addClass("complete");
             this.setCompletionStatus();
@@ -146,32 +101,11 @@ define(function(require) {
             if (isResetOnRevisit) {
                 this.model.reset(isResetOnRevisit);
             }
-        },
-
-        inview: function(event, visible, visiblePartX, visiblePartY) {
-            if (visible) {
-                if (visiblePartY === 'top') {
-                    this._isVisibleTop = true;
-                } else if (visiblePartY === 'bottom') {
-                    this._isVisibleBottom = true;
-                } else {
-                    this._isVisibleTop = true;
-                    this._isVisibleBottom = true;
-                }
-
-                if (this._isVisibleTop && this._isVisibleBottom) {
-                    this.$(this.model.get('cssSelector')).off('inview');
-                    this.setCompletionStatus();
-                }
-            }
         }
-
     });
 
     Adapt.register('trickleComponent', trickleComponent);
-
     return trickleComponent;
-
 });
 
 $.fn.extend({
@@ -202,79 +136,5 @@ $.fn.extend({
             $(this).removeClass('trickle-item-hidden');
         }.bind(this), 500);
         return this;
-    },
-    textScroller: function() {
-        var $el = this;
-        var el = this[0];
-        var text = el.innerHTML;
-        var currText = "";
-        var remainingText = text;
-        var i = 0;
-        var pause = false;
-        var scroller = setInterval(function() {
-            if (pause) return;
-            currText += text[i];
-            remainingText = text.substring(i + 1, text.length);
-            el.innerHTML = currText + "<span style='opacity:0'>" + remainingText + "</span>";
-            if (i === 0) $el.removeClass("textscroller");
-            if (text[i] === ".") {
-                pause = true;
-                setTimeout(function() {
-                    pause = false;
-                }, 1000)
-            }
-
-            i++;
-
-            if (i === text.length) {
-                clearInterval(scroller);
-                nextAnimation();
-            }
-        }, 20);
-    },
-    stepFade: function(t, shuffle, callback) {
-        t = t || 80;
-        var $collection = shuffle ? _.shuffle(this) : this;
-        for (var i = 0; i < $collection.length; i++) {
-            (function(i) {
-                setTimeout(function() {
-                    $collection[i].style.opacity = 1;
-                    if (i + 1 === images.length && callback) callback();
-                }, i * t);
-            })(i);
-        }
-    },
-    centre: function() {
-        var parent = this.parent();
-        this.css({
-            left: (parent.outerWidth() / 2) - (this.outerWidth() / 2),
-            top: (parent.outerHeight() / 2) - (this.outerHeight() / 2)
-        });
-        return this;
-    },
-    scrollToThis: function() {
-        var isBlockslider = this.parents(".blockslider").length > 0;
-        var $elScroll, st;
-        if (isBlockslider) {
-            $elScroll = this.parents(".block");
-            st = $elScroll.scrollTop();
-        } else {
-            st = 0;
-            $elScroll = $("html, body");
-            _.each($elScroll, function(el) {
-                st += $(el).scrollTop();
-            });
-        }
-
-        var top = this.offset().top - 80;
-        var winHeight = $(window).outerHeight();
-
-        if (top < st) $elScroll.animate({
-            scrollTop: top - 80
-        });
-        if (top > st + winHeight - 220) $elScroll.animate({
-            scrollTop: top - winHeight + 220
-        });
     }
-
 });
