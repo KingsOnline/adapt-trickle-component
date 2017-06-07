@@ -5,6 +5,13 @@
   "$ref": "http://localhost/plugins/content/component/model.schema",
   "globals": {},
   "properties": {
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "both",
+      "editorOnly": true
+    },
     "_items": {
       "type": "array",
       "required": true,
@@ -20,7 +27,8 @@
             "title": "Item text",
             "default": "",
             "validators": [],
-            "help": ""
+            "help": "",
+            "translatable": true
           },
           "_graphic": {
             "type": "object",
