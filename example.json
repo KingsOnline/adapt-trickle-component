@@ -1,26 +1,26 @@
 {
-    "_id":"c-05",
-    "_parentId":"b-05",
-    "_type":"component",
-    "_component":"trickleComponent",
-    "_classes":"",
-    "_layout":"full",
-    "title":"Our first look at a component",
-    "displayTitle":"Our first look at a component",
-    "_items": [
-      {
-        "text": "this is the text of the first item",
-        "_graphic": {
-          "alt": "alt text here",
-          "src": "course/en/images/full_width.jpg"
-        }
-      },
-      {
-        "text": "this is the text of the second item",
-        "_graphic": {
-          "alt": "alt text here",
-          "src": "course/en/images/full_width.jpg"
-        }
+  "_id": "c-05",
+  "_parentId": "b-05",
+  "_type": "component",
+  "_component": "trickleComponent",
+  "_classes": "",
+  "_layout": "full",
+  "title": "Our first look at a component",
+  "displayTitle": "Our first look at a component",
+  "_items": [{
+      "text": "this is the text of the first item",
+      "_graphic": {
+        "alt": "alt text here",
+        "src": "course/en/images/full_width.jpg"
       }
-    ]
+    },
+    {
+      "text": "this is the text of the second item",
+      "_graphic": {
+        "alt": "alt text here",
+        "src": "course/en/images/full_width.jpg"
+      }
+    }
+  ],
+  "_buttonText": "Continue"
 }

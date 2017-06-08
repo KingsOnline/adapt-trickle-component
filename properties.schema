@@ -54,6 +54,15 @@
             }
           }
         }
+      },
+      "_buttonText": {
+        "type": "string",
+        "required": false,
+        "default": "Continue",
+        "inputType": "Text",
+        "validators": [],
+        "help": "Text for the button to reveal more items.",
+        "translatable": true
       }
     }
   }
