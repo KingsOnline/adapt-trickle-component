@@ -1,7 +1,7 @@
 {
   "name": "adapt-trickle-component",
   "description": "Reveals a new item with text and/or an image with every button press.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "framework": "^2.0.0",
   "displayName": "Trickle Component",
   "component": "trickleComponent",

@@ -12,6 +12,14 @@
       "default": "both",
       "editorOnly": true
     },
+    "_buttonText": {
+      "type": "string",
+      "required": false,
+      "title": "Button text",
+      "default": "Continue",
+      "inputType": "Text",
+      "validators": []
+    },
     "_items": {
       "type": "array",
       "required": true,
@@ -54,15 +62,6 @@
             }
           }
         }
-      },
-      "_buttonText": {
-        "type": "string",
-        "required": false,
-        "default": "Continue",
-        "inputType": "Text",
-        "validators": [],
-        "help": "Text for the button to reveal more items.",
-        "translatable": true
       }
     }
   }
