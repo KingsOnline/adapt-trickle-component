@@ -12,13 +12,23 @@
       "default": "both",
       "editorOnly": true
     },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text",
+      "translatable": true
+    },
     "_buttonText": {
       "type": "string",
       "required": false,
       "title": "Button text",
       "default": "Continue",
       "inputType": "Text",
-      "validators": []
+      "validators": [],
+      "translatable": true
     },
     "_items": {
       "type": "array",
