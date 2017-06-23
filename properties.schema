@@ -41,7 +41,7 @@
           "text": {
             "type": "string",
             "required": true,
-            "inputType": "Text",
+            "inputType": "TextArea",
             "title": "Item text",
             "default": "",
             "validators": [],
